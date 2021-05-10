@@ -73,8 +73,13 @@ include("includes/dbh.inc.php");
           </table> 
     	  ";	
     	}else { 
-    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
-    	  $pname = substr($_SESSION['datab'],0,-3);
+//    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
+//	$pname = substr($_SESSION['datab'],0,-3);
+	if ($_SESSION['datab'] == "wFePYmr585"){
+		$pname = "student";
+	}else if ($_SESSION['datab']== "jAT5KBjxX2"){
+		$pname = "professor";
+	}
 	  $name = $pname.'_name';
 	  $bio = $pname.'_bio';	
 	  $email = $pname.'_email';
@@ -229,25 +234,25 @@ include("includes/dbh.inc.php");
                 <ul style="list-style:None">
           <?php 
           $db = $_SESSION['datab'];
-      	  $con = mysqli_connect("localhost","root","",$db);
+//        $con = mysqli_connect("localhost","root","",$db);
       	if ($_SERVER['REQUEST_METHOD']=='POST' && empty($_SESSION['post-create']))
       	{	
       		$_SESSION["post-create"] == 'true';
-      		if ($con ->connect_error)
+      		if ($conn ->connect_error)
       		{
-      			echo "Failed to connect to DB".$con->connect_error;
+      			echo "Failed to connect to DB".$conn->connect_error;
       		}
       		$id = $_SESSION["id"];
-      		$imageName = $con -> real_escape_string($_FILES["uploadFile"]["name"]);
-      		$imageType = $con -> real_escape_string($_FILES["uploadFile"]["type"]);
-      		$imageData = $con ->real_escape_string(file_get_contents($_FILES["uploadFile"]["tmp_name"]));
+      		$imageName = $conn -> real_escape_string($_FILES["uploadFile"]["name"]);
+      		$imageType = $conn -> real_escape_string($_FILES["uploadFile"]["type"]);
+      		$imageData = $conn ->real_escape_string(file_get_contents($_FILES["uploadFile"]["tmp_name"]));
       		
-      		$title = $con -> real_escape_string($_POST["post-title"]);
-      		$status = $con -> real_escape_string($_POST["post-status"]);
+      		$title = $conn -> real_escape_string($_POST["post-title"]);
+      		$status = $conn -> real_escape_string($_POST["post-status"]);
       		if (substr($imageType,0,5) == "image" and !empty($title) and !empty($imageData) and !empty($status))
       		{
       			$query = "INSERT INTO posts_details(posts_status,posts_user,posts_image,image_ext) VALUES('$status','$id','$imageData','$imageType');";
-      			mysqli_query($con,$query);
+      			mysqli_query($conn,$query);
       			header('Location: '.$_SERVER['PHP_SELF'].'?success');
 			exit;
       		}else
@@ -262,8 +267,8 @@ include("includes/dbh.inc.php");
       	?>
       	
       	<?php
-	$studentdb = mysqli_connect("localhost","root","","student_db");
-	$professordb = mysqli_connect("localhost","root","","professor_db");
+	$studentdb = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+	$professordb = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
       	$query = "SELECT * FROM posts_details ORDER BY postsreg_date DESC;";
       	$result1 = mysqli_query($studentdb,$query);
       	$result2 = mysqli_query($professordb,$query);
