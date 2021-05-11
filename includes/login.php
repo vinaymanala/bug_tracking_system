@@ -44,7 +44,7 @@ if (isset($_POST['login'])){
 	  		session_start();
 	  		$_SESSION['id'] = $row['main_id'];
 	  		$_SESSION['username'] = $row['student_name'];
-	  		$_SESSION['datab'] = "student_db";
+	  		$_SESSION['datab'] = "wFePYmr585";
 	  		header("location: ../index.php?login=success");
 	  		exit();
 	  	}else{
@@ -59,7 +59,7 @@ if (isset($_POST['login'])){
 		  		session_start();
 		  		$_SESSION['id'] = $row['main_id'];
 		  		$_SESSION['username'] = $row['professor_name'];
-		  		$_SESSION['datab'] = "professor_db";
+		  		$_SESSION['datab'] = "jAT5KBjxX2";
 		  		header("location: ../index.php?login=success");
 		  		exit();
 	  		}else{

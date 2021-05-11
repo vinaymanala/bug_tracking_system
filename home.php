@@ -254,7 +254,7 @@ if (!isset($_SESSION['id'])){
 	
 	}
 	function filterTable($query){
-		$conn = mysqli_connect("localhost","root","","student_db");
+		$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
 /*		if ($conn->connect_error){
 			echo "Connection failed".$conn->connect_error;
 		}*/

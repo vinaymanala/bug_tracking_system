@@ -26,9 +26,15 @@
  		exit();
  	
  	}else if ($profile == "student" | "professor"){
- 			$db = $profile.'_db';
-			$table = $profile.'_users';
-	 		$conn = mysqli_connect("localhost","root","",$db);
+ 		if ($profile == "student"){
+			$db = "student";
+			$table = $db.'_users';
+			$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+		}else if ($profile == "professor"){
+			$db = "professor";
+			$table = $db.'_users';
+			$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+		}
 	 		
 	 	}if ($conn -> connect_error){
  			header("location: ../".$page."?error2=sqlerror");

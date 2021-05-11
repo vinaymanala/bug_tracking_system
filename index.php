@@ -14,8 +14,8 @@ include("includes/dbh.inc.php");
     <title><?php echo($_SESSION['username']);?> Area | Tickets</title>
     <?php endif ?>
     <?php 
-    	$student_db = mysqli_connect("localhost","root","","student_db");
-	$professor_db = mysqli_connect("localhost","root","","professor_db");
+	$student_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+	$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
     ?>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

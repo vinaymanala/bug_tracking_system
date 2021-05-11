@@ -14,8 +14,8 @@ include("includes/dbh.inc.php");
     <title><?php echo($_SESSION['username']);?> Area | Tickets</title>
     <?php endif ?>
     <?php 
-    	$student_db = mysqli_connect("localhost","root","","student_db");
-	$professor_db = mysqli_connect("localhost","root","","professor_db");
+    	$student_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+	$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
     ?>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,8 +73,13 @@ include("includes/dbh.inc.php");
           </table> 
     	  ";	
     	}else { 
-    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
-    	  $pname = substr($_SESSION['datab'],0,-3);
+//  	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
+//    	  $pname = substr($_SESSION['datab'],0,-3);
+	if ($_SESSION['datab'] == "wFePYmr585"){
+                $pname = "student";
+        }else if ($_SESSION['datab']== "jAT5KBjxX2"){
+                $pname = "professor";
+        }
 	  $name = $pname.'_name';
 	  $bio = $pname.'_bio';	
 	  $email = $pname.'_email';
