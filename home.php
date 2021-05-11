@@ -80,8 +80,10 @@ if (!isset($_SESSION['id'])){
 //    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
  //  	  $pname = substr($_SESSION['datab'],0,-3);
 	if ($_SESSION['datab'] == "wFePYmr585"){
+		$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
                 $pname = "student";
-        }else if ($_SESSION['datab']== "jAT5KBjxX2"){
+        }else if ($_SESSION['datab'] == "jAT5KBjxX2"){
+        	$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
                 $pname = "professor";
         }
 	  $name = $pname.'_name';
@@ -264,7 +266,7 @@ if (!isset($_SESSION['id'])){
 	}
 	function filterProf($query){
 		$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
-		$filter_result = mysqli_query($professordb,$query);
+		$filter_result = mysqli_query($professor_db,$query);
 		return $filter_result;
 	
 	}

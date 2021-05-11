@@ -1,4 +1,3 @@
-
 <div class="table-responsive">
 	<table class="table table-bordered table-hover">
 
@@ -6,6 +5,11 @@
 session_start();
 		$ticket_id = $_POST['ticket_id'];
 		$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
+		if ($_SESSION['datab'] == "wFePYmr585"){
+			$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+		}else if ($_SESSION['datab']== "jAT5KBjxX2"){
+			$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+		}
 		$query = "SELECT * FROM ticket_details WHERE ticket_id='$ticket_id';";
 		$result = mysqli_query($conn,$query);
 		    

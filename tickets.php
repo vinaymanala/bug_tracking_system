@@ -73,8 +73,10 @@ if (!isset($_SESSION['id'])){
 //    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
 //    	  $pname = substr($_SESSION['datab'],0,-3);
 	 if ($_SESSION['datab'] == "wFePYmr585"){
+	 	$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
                 $pname = "student";
         }else if ($_SESSION['datab']== "jAT5KBjxX2"){
+        	$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
                 $pname = "professor";
         }
 	  $name = $pname.'_name';
@@ -233,11 +235,14 @@ if (!isset($_SESSION['id'])){
 		$student_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
 		$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
 
-
+	
 		if(isset($_SESSION['id'])){
-			$db = $_SESSION['datab'];
+			if ($_SESSION['datab'] == "wFePYmr585"){
+				$user_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+			}else if ($_SESSION['datab']== "jAT5KBjxX2"){
+				$user_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+			}
 			$id = $_SESSION['id'];
-			$user_db = mysqli_connect("localhost","root","",$db);
 			$query = "SELECT * FROM ticket_details WHERE id= $id ORDER BY Comment DESC;";
 			$result = mysqli_query($user_db,$query);
 			$resultCheck = mysqli_num_rows($result);
