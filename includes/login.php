@@ -13,11 +13,11 @@ if (isset($_POST['logout'])){
 //$student_db = mysqli_connect("localhost","root","","student_db");
 //$professor_db = mysqli_connect("localhost","root","","professor_db");
 
-//Remote Connection
+//Remote Connection - revert changes
 
-$admin_db = mysqli_connect("remotemysql.com","wduvQYfSN0","1vspLjNzfW","wduvQYfSN0");
-$student_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
-$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+$admin_db = mysqli_connect("localhost","root","","bug_tracker");
+$student_db = mysqli_connect("localhost","root","","student_db");
+$professor_db = mysqli_connect("localhost","root","","professor_db");
 
 if (isset($_POST['login'])){
 	$name = $_POST['username'];
