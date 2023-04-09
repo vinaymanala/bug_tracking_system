@@ -237,12 +237,9 @@ if (!isset($_SESSION['id'])){
 
 	
 		if(isset($_SESSION['id'])){
-			if ($_SESSION['datab'] == "wFePYmr585"){
-				$user_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
-			}else if ($_SESSION['datab']== "jAT5KBjxX2"){
-				$user_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
-			}
+			$db = $_SESSION['datab'];
 			$id = $_SESSION['id'];
+			$user_db = mysqli_connect("localhost","root","",$db);
 			$query = "SELECT * FROM ticket_details WHERE id= $id ORDER BY Comment DESC;";
 			$result = mysqli_query($user_db,$query);
 			$resultCheck = mysqli_num_rows($result);
