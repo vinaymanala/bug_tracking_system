@@ -1,7 +1,7 @@
 <?php	
 	session_start();
 	include("includes/logout.php");
-	include_once("includes/dbh.inc.php");	
+// 	include_once("includes/dbh.inc.php");	
 //	include_once "includes/ticket_details.php";
 	
 ?>
@@ -77,15 +77,15 @@ if (!isset($_SESSION['id'])){
           </table> 
     	  ";	
     	}else {
-//    	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
- //  	  $pname = substr($_SESSION['datab'],0,-3);
-	if ($_SESSION['datab'] == "wFePYmr585"){
-		$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
-                $pname = "student";
-        }else if ($_SESSION['datab'] == "jAT5KBjxX2"){
-        	$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
-                $pname = "professor";
-        }
+   	$conn = mysqli_connect("localhost","root","",$_SESSION['datab']);
+  	$pname = substr($_SESSION['datab'],0,-3);
+// 	if ($_SESSION['datab'] == "wFePYmr585"){
+// 		$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+//                 $pname = "student";
+//         }else if ($_SESSION['datab'] == "jAT5KBjxX2"){
+//         	$conn = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+//                 $pname = "professor";
+//         }
 	  $name = $pname.'_name';
 	  $bio = $pname.'_bio';	
 	  $email = $pname.'_email';
@@ -134,8 +134,8 @@ if (!isset($_SESSION['id'])){
                 <?php echo '<a class="dropdown-item" type="button" data-toggle="modal" data-target="#add-user">Add Users</a>'; ?>
                 <?php endif ?>
                 <?php 
-		  $student_db = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
-		  $professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+		 $student_db = mysqli_connect("localhost","root","","student_db");
+		 $professor_db = mysqli_connect("localhost","root","","professor_db");
 		    ?>
               </div>
             </div>
@@ -256,7 +256,7 @@ if (!isset($_SESSION['id'])){
 	
 	}
 	function filterTable($query){
-		$conn = mysqli_connect("remotemysql.com","wFePYmr585","KtKgZEKcEl","wFePYmr585");
+		$conn = mysqli_connect("localhost","root","","student_db");
 /*		if ($conn->connect_error){
 			echo "Connection failed".$conn->connect_error;
 		}*/
@@ -265,7 +265,7 @@ if (!isset($_SESSION['id'])){
 	
 	}
 	function filterProf($query){
-		$professor_db = mysqli_connect("remotemysql.com","jAT5KBjxX2","REWnHNbQUo","jAT5KBjxX2");
+		$professor_db = mysqli_connect("localhost","root","","professor_db");
 		$filter_result = mysqli_query($professor_db,$query);
 		return $filter_result;
 	
